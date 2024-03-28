@@ -1,10 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="../static/styles/reset.css">
+    <link rel="stylesheet" href="../static/styles/vars.css">
+    <link rel="stylesheet" href="../static/styles/login.css">
+    <title>Z Box Cross Club</title>
+
 </head>
 <body>
 
+    <div class="container">
+        <img class="logo" id="logo" src="../static/Imagens/logo.png" alt="zbox">
+        <div id="container-button">
+            <div class="login">
+                <button id="button-login" onclick="Login()">Login</button>
+                <button id="button-registration" onclick="Registration()">Cadastre-se</button>
+            </div>
+        </div>
+        <div id="container-login">
+            <div class="container-form">
+
+                <form method="POST" action="" class="form-login">
+
+                    <label class="label-form" for="email-login">E-mail:</label>
+                    <input class="input-form" type="email" id="email-login" name="email-login" required>
+
+                    <label class="label-form" for="password-login">Senha:</label>
+                    <input class="input-form" type="password" id="password-login" name="password-login" required>
+                    <div class="checkbox-login">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label class="label-checkbox" for="remember">Lembrar dados de acesso</label>
+                        <button class="forgot" type="button" onclick="chagePassword()">Esqueci minha Senha.</button>
+                    </div>
+                    <button id="submit-login" type="submit">Login</button>
+
+                </form>
+            </div>
+        </div>
+
+        <div id="container-registration">
+            <div class="container-form">
+                <form action="" method="post" class="form-registration" onsubmit="return verificarSenha(), validatePassword()">
+                    <label class="label-form" for="name">Nome:</label>
+                    <input class="input-form" type="text" id="name" name="name" required>
+
+                    <label class="label-form" for="email-registration">Email:</label>
+                    <input class="input-form" type="email" id="email-registration" name="email-registration" required>
+
+                    <label class="label-form" for="password-registration">Senha:</label>
+                    <input class="input-form" type="password" id="password-registration" name="password-registration" required>
+
+                    <br>
+                    <p id="minimo">Mínimo de 8 caracteres.</p>
+                    <p id="maiuscula">Pelo menos 1 letra maiuscula.</p>
+                    <p id="minuscula">Pelo menos 1 letra minuscula.</p>
+                    <p id="numero">Pelo menos 1 número.</p>
+                    <p id="especial">Pelo menos 1 caractere especial.</p>
+                    <br>
+
+                    <label class="label-form" for="confirm-password">Confirmar Senha:</label>
+                    <input class="input-form" type="password" id="confirm-password" name="confirm-password" required>
+
+                    <button id="submit-registration" type="submit">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+        <div id="container-change">
+            <button class="close-change" type="button" onclick="closeChange()">x</button>
+            <p class="description">Insira seu e-mail e clique no botão enviar código.</p>
+            <form action="" method="post"class='form-registration' onsubmit="return contagemRegressiva(tempoTotal)">
+                <label class="label-form" for="email-change">Email:</label>
+                <input class="input-form" type="email" id="email-change" name="email-change" required>
+
+                <button type="submit" class="code" onclick="securityCode()">Enviar Código</button>
+                <div id="contador"></div>
+            </form>
+            <form action="" method="post" class="form-registration" onsubmit="return verificarSenhaC(), validatePasswordC()">
+                <label for="security" class="label-form" id="label-codigo">Código de segurança:</label>
+                <input type="text" id="security" name="security" maxlength="4" required>
+
+                <label class="label-form" for="password-change">Nova senha:</label>
+                <input class="input-form" type="password" id="password-change" name="password-change" required>
+
+                <br>
+                <p id="minimo-change">Mínimo de 8 caracteres.</p>
+                <p id="maiuscula-change">Pelo menos 1 letra maiuscula.</p>
+                <p id="minuscula-change">Pelo menos 1 letra minuscula.</p>
+                <p id="numero-change">Pelo menos 1 número.</p>
+                <p id="especial-change">Pelo menos 1 caractere especial.</p>
+                <br>
+
+                <label class="label-form"  for="confirm-passwordc">Confirmar Senha:</label>
+                <input class="input-form" type="password" id="confirm-passwordc" name="confirm-passwordc" required>
+
+                <button id="submit-change" type="submit">Alterar</button>
+        </div>
+    </div>
+    <div class="container2">
+        <img src="../static/Imagens/alcohol-1961542_1280.jpg" alt="bebidas" class="img-principal">
+        <h1 class="titulo">Z Box Cross Club</h1>
+        <div class="texto-principal">
+            <img src="../static/Imagens/logo.png" alt="zbox" class="logo2">
+            <p class="paragrafo">Controle as vendas e o estoque do seu estabelecimento de maneira simples e eficaz.</p>
+            <p class="paragrafo">Cadastre bebidas.</p>
+            <p class="paragrafo">Insira as vendas.</p>
+            <p class="paragrafo">Confirme pagamentos.</p>
+            <p class="paragrafo">Verifique status de pagamento.</p>
+            <p class="paragrafo">Verifique seu estoque.</p>
+        </div>
+    </div>
+
+ <script src="../static/scripts/login.js"></script>
 </body>
 </html>
