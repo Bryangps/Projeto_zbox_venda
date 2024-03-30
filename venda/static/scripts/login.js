@@ -284,5 +284,15 @@ var tempoTotal = 180;
 
 
 function securityCode(){
-    alert('Clique em ok e enviaremos um código de segurança para seu e-mail, prencha o campo dentro de 3 minutos.Verifique se preencheu o e-mail corretamente.');
+    var emailInput = document.getElementById('email-change');
+    var emailValue = emailInput.value.trim();
+
+    if (emailValue === '') {
+        alert('Por favor, preencha o campo de e-mail antes de enviar o código.');
+        return false;
+    }
+        else{
+            alert('Clique em ok e enviaremos um código de segurança para seu e-mail, prencha o campo dentro de 3 minutos.Verifique se preencheu o e-mail corretamente.');
+        }
+
 }
