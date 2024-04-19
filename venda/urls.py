@@ -1,8 +1,10 @@
 from django.urls import path
-from .views import Homepage, Login
+from .views import home, cadastro_bebida
 
 
 urlpatterns = [
-    path('', Homepage.as_view()),
-    path('login/', Login.as_view())
+    path('', home, name='home'),
+    # path('login/', Login.as_view())
+    path('form/', cadastro_bebida, name='form'),
+
 ]

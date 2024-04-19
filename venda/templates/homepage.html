@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/styles/reset.css">
-    <link rel="stylesheet" href="../static/styles/vars.css">
-    <link rel="stylesheet" href="../static/styles/home.css">
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/vars.css">
+    <link rel="stylesheet" href="../static/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Zbox Cross</title>
 </head>
@@ -27,7 +27,7 @@
     </div>
     <main>
         <div class="container-right">
-            <img src="../static/Imagens/alcohol-1961542_1280.jpg" alt="bebidas" class="img-principal">
+            <img src="../static/Images/alcohol-1961542_1280.jpg" alt="bebidas" class="img-principal">
             <div class="name-logout">
                 <!--colocar nesse p o nome do cadastro de quem esta logado-->
                 <p id="nome-login"></p>
@@ -42,7 +42,7 @@
             
                 <h1 class="titulo">Z Box Cross Club</h1>
                 <div class="texto-principal">
-                    <img src="../static/Imagens/logo.png" alt="zbox" class="logo2">
+                    <img src="../static/Images/logo.png" alt="zbox" class="logo2">
                     <p class="paragrafo">Controle as vendas e o estoque do seu estabelecimento de maneira simples e eficaz.</p>
                     <p class="paragrafo">Cadastre bebidas.</p>
                     <p class="paragrafo">Insira as vendas.</p>
@@ -55,7 +55,9 @@
         <div id="container-cadastro">
             <button class="fechar" onclick="Close()">x</button>
             <h2 class="titulo-form"><i class="fas fa-wine-bottle"></i> Cadastro de Bebidas</h2>
-            <Form method="post" action="" class="formulario" id="form-cadastrob" onsubmit="submitForm(event)">
+            <Form method="post" action="form/" class="formulario" id="form-cadastrob" name="meu-form">
+
+                {% csrf_token %}
                 <label for="nome-bebida" class="label-form">Nome do produto:</label>
                 <input type="text" id="nome-bebida" name="nome-bebida" class="input-form" required>
 
@@ -88,8 +90,8 @@
         <div id="container-vendas">
             <button class="fechar" onclick="Close()">x</button>
             <h2><i class="fas fa-shopping-cart"></i> Vendas de bebidas</h2>
-            <form action="" method="post" class="formulario">
-
+            <form action="#" method="post" class="formulario" >
+                    {% csrf_token %}
                 <label for="venda-nome" class="label-form">Nome do cliente:</label> 
                 <input type="text" id="venda-nome" name="venda-nome" class="input-form" required>
 
@@ -289,6 +291,6 @@
     </main>
 
 
-    <script src="../static/scripts/home.js"></script>
+    <script src="../static/js/home.js"></script>
 </body>
 </html>
