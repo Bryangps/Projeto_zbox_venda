@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, FormView
-from .forms import CadastroBebidaForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from .models import Estoque
 
 # Create your views here.
 
@@ -17,9 +16,17 @@ def cadastro_bebida(request):
         tipo = request.POST.get('tipo-bebida')
         qtd = int(request.POST.get('unidade-caixa')) * int(request.POST.get('unidade'))
         preco = request.POST.get('gasto-caixa')
+        if preco in 'R$':
+            preco = preco.replace('R$', ' ')
+            print(preco)
+            preco = float(preco)
         total_gasto = request.POST.get('venda-unidade')
+        if total_gasto in 'R$':
+            total_gasto = total_gasto.replace('R$', ' ')
+            total_gasto = float(total_gasto)
         print(nome, tipo, qtd, preco, total_gasto)
-
+        estoque = Estoque(nome=nome, tipo_produto=tipo, qtd=qtd, preco_vendas=preco, total_gasto=total_gasto)
+        estoque.save()
         return render(request, 'homepage.html')
     else:
         return HttpResponseRedirect(reverse('meu-form'))
