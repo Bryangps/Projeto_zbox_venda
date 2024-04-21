@@ -18,22 +18,22 @@ class Estoque(models.Model):
     preco_vendas = models.FloatField(default=0)
     total_gasto = models.FloatField(default=0)
     datacriacao_estoque = models.DateTimeField(default=timezone.now)
-    estoque = models.ForeignKey(User, related_name='estoque', on_delete=models.CASCADE)
+    autor_estoque = models.ForeignKey(User, related_name='estoque', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nome
 
 
 class Cliente(models.Model):
-    nome_cliente = models.CharField(max_length=10)
-    datacriacao_usuario = models.DateTimeField(default=timezone.now)
-    cliente = models.ForeignKey(User, related_name='usuario', on_delete=models.CASCADE)
+    name = models.CharField(max_length=10)
+    datacriacao_cliente = models.DateTimeField(default=timezone.now)
+    autor = models.ForeignKey(User, related_name='cliente', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.nome_cliente
+        return self.name
 
 
-class Vendas(models.Model):
+class Venda(models.Model):
     tipo_bebida = models.CharField(max_length=25)
     bebida = models.CharField(max_length=25)
     qtd = models.IntegerField(default=0)
@@ -41,9 +41,8 @@ class Vendas(models.Model):
     total = models.FloatField(default=0)
     status = models.CharField(max_length=25)
     data_venda = models.DateTimeField(default=timezone.now)
-    data_pagamento = models.DateTimeField(default=timezone.now)
-    usuario_venda = models.ForeignKey(User, related_name='usuario', on_delete=models.CASCADE)
-    cliente = models.ForeignKey(Cliente, related_name='cliente', on_delete=models.CASCADE)
+    data_pagamento = models.DateTimeField()
+    cliente = models.ForeignKey(Cliente, related_name='venda', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.bebida
