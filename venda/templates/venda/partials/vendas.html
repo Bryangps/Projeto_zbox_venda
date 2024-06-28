@@ -1,0 +1,33 @@
+<div id="container-vendas">
+            <button class="fechar" onclick="Close()">x</button>
+            <h2><i class="fas fa-shopping-cart"></i> Vendas de bebidas</h2>
+            <form action="vendas/" method="post" class="formulario" name="bryan" >
+                    {% csrf_token %}
+                <label for="venda-nome" class="label-form">Nome do cliente:</label>
+                <input type="text" id="venda-nome" name="venda-nome" class="input-form" required>
+
+                <label for="venda-tipo" class="label-form">Tipo de bebida:</label>
+                <select name="venda-tipo" id="venda-tipo" class="input-form">
+                    <option value="alcoolica">Alcóolica</option>
+                    <option value="nao-alcoolica">Não Alcóolica</option>
+                </select>
+
+                <label for="venda-bebida" class="label-form">Nome da bebida:</label>
+                <select id="venda-bebida" name="venda-bebida" class="input-form">
+                    <!--iterar sobre as bebidas cadastradas para popular o select-->
+                    <option value=""></option>
+                </select>
+
+                <label for="venda-quantidade" class="label-form">Quantidade:</label>
+                <input type="number" min="0" id="venda-quantidade" name="venda-quantidade" class="input-form" required>
+
+                <label for="venda-valor" class="label-form">Valor de venda por unidade:</label>
+                <input type="text" id="venda-valor" name="venda-valor" class="input-form" oninput="formatarDinheiro(this)" required>
+
+                <div class="botoes">
+                    <button type="submit" class="botao"  id="form-venda" onsubmit="submitVenda(event)">Confirmar Venda</button>
+                    <button type="reset"  class="botao">Cancelar</button>
+                    <button type="button" onclick="Pagamento()"  class="botao">Fazer pagamento</button>
+                </div>
+            </form>
+</div>

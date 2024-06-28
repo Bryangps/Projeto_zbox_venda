@@ -7,11 +7,8 @@ TIPO_BEBIDAS = (
 
 
 class CadastroBebidaForm(forms.Form):
+    category = forms.CharField(label='Categoria')
     nome_produto = forms.CharField(label='Nome do Produto', max_length=100)
-    tipo = forms.CharField(label='Tipo')
-    qtd_caixas = forms.IntegerField(label='Quantidade de Caixas')
-    Unidade = forms.IntegerField(label='Unidade')
-    valor_gasto = forms.FloatField(label='Valor Gasto')
-    valor_venda = forms.FloatField(label='Valor Venda')
-
+    purchase_price = forms.DecimalField(label='Total Gasto', max_digits=10, decimal_places=2)
+    sale_price = forms.DecimalField(label='Preço de Venda', max_digits=10, decimal_places=2)
 

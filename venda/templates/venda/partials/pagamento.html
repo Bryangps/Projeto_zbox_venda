@@ -1,0 +1,45 @@
+<div id="container-pagamento">
+            <button class="fechar" onclick="Close()">x</button>
+            <h2><i class="far fa-credit-card"></i> Efetuar Pagamentos</h2>
+            <form action="" method="post" class="busca">
+                <input type="text" id="pesquisa-cliente" name="pesquisa-cliente" placeholder="Buscar cliente...">
+                <button type="submit" class="buscar"><i class="fas fa-search"></i></button>
+            </form>
+            <div class="overflow-pagto">
+                <table id="tabela-vendas">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Bebida</th>
+                            <th>Tipo</th>
+                            <th>Quantidade</th>
+                            <th>Valor unitário</th>
+                            <th>Valor total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!--iterar para popular a table
+                    <tr>
+                        <td>Cliente 1</td>
+                        <td>Vinho</td>
+                        <td>Alcóolica</td>
+                        <td>R$ 5,00</td>
+                        <td>R$ 5,00</td>
+                        <td>5,00</td>
+                    </tr>
+                    -->
+                    </tbody>
+                </table>
+            </div>
+            <form action="" method="post" class="formulario">
+                <label for="total-pagto" class="label-form, label-total">Total:</label>
+                <input type="text" id="total-pagto" class="input-form" oninput="formatarDinheiro(this)" readonly>
+                <div class="botoes">
+                    <button type="button" class="botao" id="pix">Pix</button>
+                    <button type="button"  class="botao" id="cartao-credito">Crédito</button>
+                    <button type="button"  class="botao" id="cartao-debito">Débito</button>
+                    <button type="button"  class="botao" id="cdinheiro">Dinheiro</button>
+                    <button type="reset" class="botao">Cancelar</button>
+                </div>
+            </form>
+</div>

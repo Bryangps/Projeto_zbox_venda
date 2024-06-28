@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../static/css/reset.css">
-    <link rel="stylesheet" href="../static/css/vars.css">
-    <link rel="stylesheet" href="../static/css/login.css">
-    <title>Z Box Cross Club</title>
+{% extends 'global/base.html' %}
+{% load static %}
 
-</head>
-<body>
+{% block content %}
 
     <div class="container">
-        <img class="logo" id="logo" src="../static/Images/logo.png" alt="zbox">
+        <img class="logo" id="logo" src="{% static 'Images/logo.png' %}" alt="zbox">
         <div id="container-button">
             <div class="login">
                 <button id="button-login" onclick="Login()">Login</button>
@@ -69,7 +62,7 @@
         <div id="container-change">
             <button class="close-change" type="button" onclick="closeChange()">x</button>
             <p class="description">Insira seu e-mail e clique no botão enviar código.</p>
-            <form action="" method="post"class='form-registration' onsubmit="return contagemRegressiva(tempoTotal)">
+            <form action="" method="post" class='form-registration' onsubmit="return contagemRegressiva(tempoTotal)">
                 <label class="label-form" for="email-change">Email:</label>
                 <input class="input-form" type="email" id="email-change" name="email-change" required>
 
@@ -98,7 +91,7 @@
         </div>
     </div>
     <div class="container2">
-        <img src="../static/Images/alcohol-1961542_1280.jpg" alt="bebidas" class="img-principal">
+        <img src="{% static 'Images/alcohol-1961542_1280.jpg' %}" alt="bebidas"  class="img-principal">
         <h1 class="titulo">Z Box Cross Club</h1>
         <div class="texto-principal">
             <img src="../static/Images/logo.png" alt="zbox" class="logo2">
@@ -111,6 +104,5 @@
         </div>
     </div>
 
- <script src="../static/js/login.js"></script>
-</body>
-</html>
+ <script src="{% static 'js/login.js' %}"></script>
+{% endblock %}

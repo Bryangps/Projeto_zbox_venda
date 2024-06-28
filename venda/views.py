@@ -1,45 +1,26 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.urls import reverse
-from .models import Estoque
-
-# Create your views here.
+from venda.models import Product, Stock, User, Category
 
 
 def home(request):
-    return render(request, 'homepage.html')
-
-
-def cadastro_bebida(request):
     if request.method == 'POST':
-        nome = request.POST.get('nome-bebida')
-        tipo = request.POST.get('tipo-bebida')
-        qtd = int(request.POST.get('unidade-caixa')) * int(request.POST.get('unidade'))
-        preco = request.POST.get('gasto-caixa')
-        if preco in 'R$':
-            preco = preco.replace('R$', ' ')
-            print(preco)
-            preco = float(preco)
-        total_gasto = request.POST.get('venda-unidade')
-        if total_gasto in 'R$':
-            total_gasto = total_gasto.replace('R$', ' ')
-            total_gasto = float(total_gasto)
-        print(nome, tipo, qtd, preco, total_gasto)
-        estoque = Estoque(nome=nome, tipo_produto=tipo, qtd=qtd, preco_vendas=preco, total_gasto=total_gasto)
-        estoque.save()
-        return render(request, 'homepage.html')
-    else:
-        return HttpResponseRedirect(reverse('meu-form'))
+        name = request.POST.get('nome-produto')
+        categoria = request.POST.get('categoria')
+        quantidade = request.POST.get('quantidade')
+        total_gasto = request.POST.get('total-gasto')
+        preco_venda = request.POST.get('preco-venda')
+
+        category = Category.objects.create(name=categoria)
+        product = Product.objects.create(id_user=request.user, name=name, category_id=category,
+                                         purchase_price=total_gasto, sale_price=preco_venda)
+        stock = Stock.objects.create(id_user=request.user, product_id=product, stock_quantity=quantidade)
+        cate = Category.objects.all()
+
+    return render(request, 'venda/pages/home.html', context={'category': cate})
 
 
 
 
-# class Homepage(FormView):
-#     template_name = 'homepage.html'
-#     form_class = CadastroBebidaForm
 
 
-
-
-# class Login(TemplateView):
-#     template_name = 'login.html'

@@ -1,0 +1,33 @@
+<div id="container-cadastro">
+            <button class="fechar" onclick="Close()">x</button>
+            <h2 class="titulo-form"><i class="fas fa-wine-bottle"></i> Cadastro de Bebidas</h2>
+            <Form method="POST" action="{% url 'home' %}" class="formulario" id="form-cadastrob" onsubmit="submitForm(event)">
+                {% csrf_token %}
+                <label for="nome-bebida" class="label-form">Nome do produto:</label>
+                <input type="text" id="nome-bebida" name="nome-bebida" class="input-form" required>
+
+                <label for="categoria" class="label-form">Categoria:</label>
+                <select name="categoria" id="categoria" class="input-form">
+                    <option value="alcoolica">Alcóolica</option>
+                    <option value="nao-alcoolica">Não Alcóolica</option>
+                </select>
+
+                <label for="total-gasto" class="label-form">Total Gasto:</label>
+                <input type="text" id="total-gasto" name="total-gasto" class="input-form" oninput="formatarDinheiro(this)" required>
+
+                <label for="valor-unidade" class="label-form">Valor Unitario da Venda:</label>
+                <input type="text" id="valor-unidade" name="valor-unidade" class="input-form" oninput="formatarDinheiro(this)" required>
+
+
+                <label for="quantidade" class="label-form">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade" class="input-form" required>
+
+{#                <label for="venda-unidade" class="label-form">Valor de venda por unidade:</label>#}
+{#                <input type="text" id="venda-unidade" name="venda-unidade" class="input-form" oninput="formatarDinheiro(this)" required>#}
+
+                <div class="botoes">
+                    <button type="submit" name="cadastrar" class="botao">Cadastrar</button>
+                    <button type="reset" name="cancelar" class="botao">Cancelar</button>
+                </div>
+            </Form>
+</div>
